@@ -1,7 +1,5 @@
 package br.com.belo.rest;
 
-import java.time.LocalDateTime;
-
 import br.com.belo.entities.User;
 import br.com.belo.request.UserRequest;
 import br.com.belo.response.UserResponse;
@@ -38,10 +36,14 @@ public class UserResource {
   @Transactional
   public Response createUser(UserRequest request) {
     User newUser = new User();
+
     newUser.setName(request.getName());
     newUser.setEmail(request.getEmail());
     newUser.setPassword(request.getPassword());
 
-    return Response.status(201).entity(userService.createUser(newUser)).build();
+    return Response
+        .status(201)
+        .entity(userService.createUser(newUser))
+        .build();
   }
 }
