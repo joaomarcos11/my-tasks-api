@@ -26,6 +26,10 @@ public class UserResource {
   @GET
   @Path("{id}")
   public Response findUserById(Integer id) {
+
+    // /users/id
+    // /users/ 
+
     User user = userService.findUserById(id);
     UserResponse userResponse = new UserResponse(user);
 

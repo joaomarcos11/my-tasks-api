@@ -19,4 +19,17 @@ public class UserService {
     userRepository.persist(user);
     return user.getId();
   }
+
+  public Object authUser(User authUser) throws Exception {
+    User user = userRepository.findUserByEmail(authUser.getEmail());
+    if (user == null || !authUser.getPassword().equals(user.getPassword())) {
+      // vai subir para camada acima, ou seja, para quem chama
+      throw new Exception("Email/senha inválidos");
+    }
+
+    // TODO: tratar token JWT
+    String token = "aksdpkdpaokdpoakop";
+
+    return token;
+  }
 }
